@@ -1,0 +1,37 @@
+1) instalar ubuntu server 20.04 no cartão sd
+
+
+2) Ajustar data e hora
+
+
+timedatectl
+
+timedatectl set-ntp false
+
+timedatectl set-time "AAAA-MM-DD"
+
+timedatectl set-time "HH:MM:SS"
+
+timedatectl set-ntp true
+
+3) update and upgrade
+
+sudo apt update
+sudo apt full-upgrade
+
+4) instalar acesso remoto
+
+sudo apt-get update 
+sudo apt-get install xrdp 
+sudo apt-get update 
+sudo apt-get install xfce4
+sudo apt-get update
+echo xfce4-session > .xsession
+sudo service xrdp restart
+hostname -I
+
+5) testar acesso remoto
+
+raspiberry imager: https://www.raspberrypi.com/software/
+
+instalando ROS noeetic (NOTA: instalar bare-bone ao invés do full-desktop): https://www.youtube.com/watch?v=QxIr5vCuD_I&t=3s&ab_channel=Cl%C3%ADstenesBento

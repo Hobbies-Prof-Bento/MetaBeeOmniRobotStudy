@@ -1,0 +1,12 @@
+<launch>
+    <!-- carrega descrição do robô -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find robot_description)/urdf/mandacaia.urdf.xacro'" />
+
+    <!-- carrega o publicador de juntas do robô -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+        <param name="use_gui" value="TRUE" />
+    </node>
+
+    <!-- carrega publicador dos estados do robô -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />    
+</launch>

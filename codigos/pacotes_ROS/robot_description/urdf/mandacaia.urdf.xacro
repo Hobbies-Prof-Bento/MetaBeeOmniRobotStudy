@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mandacaia">
+
+    <xacro:include filename="$(find robot_description)/urdf/mandacaia.gazebo.urdf.xacro"/>
+
+    <link name="base_footprint_link" />
+    
+    <link name="base_link">
+        <inertial>
+            <mass value="2.0"/>
+            <inertia ixx="0.009554166666666666" ixy="0.0" ixz="0.0" iyy="0.006208333333333334" iyz="0.0" izz="0.011354166666666665"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <!-- <box size="0.155 0.210 0.115"/> -->
+                <mesh filename="package://robot_description/models/base_link.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <!-- <box size="0.155 0.210 0.115"/> -->
+                <mesh filename="package://robot_description/models/base_link.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+        <parent link="base_footprint_link"/>
+        <child link="base_link"/>        
+    </joint>
+
+    <link name="front_wheel_left_link">
+        <inertial>            
+            <mass value="0.5"/>
+            <inertia ixx="0.0002375" ixy="0.0" ixz="0.0" iyy="0.0002375" iyz="0.0" izz="0.004"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_left_link.dae" scale="0.01 0.01 0.01"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_left_link.dae" scale="0.01 0.01 0.01"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="front_wheel_left_joint" type="continuous">
+        <origin xyz="0.06 0.1 0.025" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="front_wheel_left_link"/>        
+    </joint>
+
+    <link name="back_wheel_left_link">
+        <inertial>            
+            <mass value="0.5"/>
+            <inertia ixx="0.0002375" ixy="0.0" ixz="0.0" iyy="0.0002375" iyz="0.0" izz="0.004"/>
+        </inertial>             
+        <visual>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_left_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </visual>  
+        <collision>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_left_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </collision>      
+    </link>
+
+    <joint name="back_wheel_left_joint" type="continuous">
+        <origin xyz="-0.06 0.1 0.025" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="back_wheel_left_link"/>
+        <axis xyz="0.0 1.0 0.0"/>        
+    </joint>
+
+    <link name="front_wheel_right_link">
+        <inertial>            
+            <mass value="0.5"/>
+            <inertia ixx="0.0002375" ixy="0.0" ixz="0.0" iyy="0.0002375" iyz="0.0" izz="0.004"/>
+        </inertial>            
+        <visual>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_right_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_right_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </collision>       
+    </link>
+
+    <joint name="front_wheel_right_joint" type="continuous">
+        <origin xyz="0.06 -0.1 0.025" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="front_wheel_right_link"/>
+        <axis xyz="0.0 1.0 0.0"/>        
+    </joint>
+
+    <link name="back_wheel_right_link">
+        <inertial>            
+            <mass value="0.5"/>
+            <inertia ixx="0.0002375" ixy="0.0" ixz="0.0" iyy="0.0002375" iyz="0.0" izz="0.004"/>
+        </inertial>              
+        <visual>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_right_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <!-- <cylinder radius="0.04" length="0.03"/> -->
+                <mesh filename="package://robot_description/models/wheels_right_link.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+        </collision>        
+    </link>
+
+    <joint name="back_wheel_right_joint" type="continuous">
+        <origin xyz="-0.06 -0.1 0.025" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="back_wheel_right_link"/>
+        <axis xyz="0.0 1.0 0.0"/>        
+    </joint>
+
+    <link name="imu_link">              
+        <visual>
+            <geometry>
+                <box size="0.02 0.01 0.002"/>                
+            </geometry>
+        </visual>        
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="imu_link"/>            
+    </joint>
+
+    <link name="laser_scan_link">              
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_description/models/laser_scan_link.dae" scale="0.001 0.001 0.001" />                
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="package://robot_description/models/laser_scan_link.dae" scale="0.001 0.001 0.001" />                
+            </geometry>
+        </collision>              
+    </link>
+
+    <joint name="laser_scan_joint" type="fixed">
+        <origin xyz="0.045 0.0 0.125" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="laser_scan_link"/>            
+    </joint>
+
+</robot>

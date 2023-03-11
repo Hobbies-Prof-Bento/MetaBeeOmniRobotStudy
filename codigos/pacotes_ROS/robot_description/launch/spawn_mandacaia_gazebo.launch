@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find robot_description)/launch/spawn_urdf.launch">
+        <arg name="x" value="0.0"/>
+        <arg name="y" value="3.0"/>
+        <arg name="z" value="0.0"/>
+        <arg name="robot_name" value="mandacaia"/>
+    </include>
+    <node pkg="robot_pose_publisher" type="robot_pose_publisher" name="robot_pose_publisher" />
+</launch>
