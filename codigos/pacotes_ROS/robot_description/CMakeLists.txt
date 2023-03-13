@@ -9,11 +9,11 @@ project(robot_description)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   controller_manager
-  gazebo_ros
+  #gazebo_ros
   joint_state_publisher
   robot_state_publisher
   rospy
-  rviz
+  #rviz
 )
 
 ## System dependencies are found with CMake's conventions
