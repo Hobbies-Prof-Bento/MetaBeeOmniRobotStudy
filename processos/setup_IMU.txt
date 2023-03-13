@@ -1,0 +1,52 @@
+1) Acessar remotamente o raspberry
+2) Desabilitar suspenção automática
+
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+3) instalar ros noetic (barebones)
+4) instalar raps-config
+
+https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/ (buscar ultima versão)
+
+wget -p -O ./raspi-config_20211019_all.deb https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/<ultima_versão>
+
+exemplo:
+wget -p -O ./raspi-config_20211019_all.deb https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20230214_all.deb
+
+sudo apt -y install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils
+
+sudo apt install -fy
+
+sudo dpkg -i ./raspi-config_20211019_all.deb
+
+5) instalar i2c-tools
+
+sudo apt install i2c-tools
+
+6) verificar porta
+
+i2cdetect -r -y 1
+
+7) Reforçar permissão para uso dos IOs
+
+sudo apt install rpi.gpio-common
+sudo adduser "${USER}" dialout
+sudo reboot
+
+8) instalar biblioteca python para escutar imu
+
+sudo apt install ros-noetic-rosserial
+
+sudo apt install ros-noetic-rosserial-arduino
+
+sudo apt install python3-pip
+
+pip3 install adafruit-blinka
+
+pip install mpu6050-raspberrypi
+
+sudo apt install python3-smbus
+
+9) clonar, compilar e executar node o IMU
