@@ -1,0 +1,22 @@
+1) Acessar remotamente o raspberry
+2) instalar pacote para o lidar
+
+sudo apt-get install ros-noetic-hls-lfcd-lds-driver
+
+3) realizar permissão para porta usb
+
+sudo chmod a+rw /dev/ttyUSB0
+
+4) iniciar o pacote do lidar
+
+5) editar pacote bringup 
+
+sudo apt install ros-noetic-xacro
+
+sudo apt install ros-noetic-robot-controllers
+
+
+6) inicializar todos os componentes
+
+
+
